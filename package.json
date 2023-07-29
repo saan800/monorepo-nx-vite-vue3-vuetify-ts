@@ -1,0 +1,14 @@
+{
+  "name": "monorepo-nx-vite-vue3-vuetify-ts",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "nx": "16.5.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
