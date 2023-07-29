@@ -5,6 +5,7 @@
 [nx](https://nx.dev/) with the plugins:
 * [@nx/vite](https://nx.dev/packages/vite)
 * [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
+* [@nx/cypress](https://nx.dev/packages/cypress)
 * [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
 
 Vue.js app
@@ -15,15 +16,16 @@ Vue.js app
 * [Pinia](https://pinia.vuejs.org/)
 * [Material Design Icons](https://pictogrammers.com/library/mdi/)
 * [Web Font Loader](https://www.npmjs.com/package/webfontloader)
-* Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
+* TODO: Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
 
 Testing
 * [Vitest](https://vitest.dev/)
-* Cypress for e2e: https://nx.dev/packages/cypress  and https://www.cypress.io/ 
+* TODO: Cypress for e2e:
+  * https://www.cypress.io/ 
   * https://docs.cypress.io/plugins
-  * vite
-  * with gherkin/cucumber
-  * code coverage
+    * vite
+    * with gherkin/cucumber
+    * code coverage ?
   * https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
 
 Other
@@ -34,7 +36,6 @@ Other
 * prettier
 * husky - git commit hooks - eslint & prettier
 * renovate
-
 
 ## Setup
 
@@ -60,12 +61,24 @@ npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/
 
 cd monorepo-nx-vite-vue3-vuetify-ts
 
-# other packages for vue
+# add packages for vue
 # -W flag installs them at the root level
 yarn add -W @mdi/js pinia vue-router vuetify webfontloader
-yarn add --dev -W 
-```
+yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig eslint-plugin-vuetify sass vite-plugin-vuetify
 
+# add packages for testing
+yarn add --dev @nx/cypress 
+# cypress
+# eslint-plugin-cypress
+
+# add other tooling packages
+yarn add --dev -W 
+# concurrently
+# eslint-plugin-prettier
+# eslint-plugin-promise
+# eslint-plugin-tsdoc
+# vite-plugin-checker
+```
 
 ### Manual Updates
 
