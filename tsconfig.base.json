@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    // "target": "es2015",
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {}
+  },
+  "exclude": ["node_modules", "tmp"]
+}

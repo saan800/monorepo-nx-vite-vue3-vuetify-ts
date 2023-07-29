@@ -1,0 +1,8 @@
+{
+  "cSpell.language": "en-GB",
+  "cSpell.words": ["nxext", "pinia", "Vite", "vuetify", "webfontloader"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "prettier.configPath": "./.prettierrc"
+}
