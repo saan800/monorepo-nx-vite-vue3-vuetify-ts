@@ -1,24 +1,41 @@
-/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/app',
+  cacheDir: '../../node_modules/.vite/my-app',
 
   server: {
     port: 4200,
-    host: 'localhost'
+    host: 'localhost',
+    https: true,
+    open: true
   },
 
   preview: {
     port: 4300,
-    host: 'localhost'
+    host: 'localhost',
+    https: true,
+    open: true
   },
 
   plugins: [
-    vue(),
+    basicSsl(),
+    vue({
+      template: {
+        // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin#image-loading
+        transformAssetUrls
+      }
+    }),
+    // Vuetify Loader
+    // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin
+    vuetify({
+      autoImport: true,
+      styles: { configFile: 'src/styles/settings.scss' }
+    }),
     viteTsConfigPaths({
       root: '../../'
     })

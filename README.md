@@ -94,30 +94,15 @@ Ensure the following packages are in `devDependencies` (instead of `dependencies
 - @nxext/.\*
 - vue-tsc
 
-#### [.prettierrc](./.prettierrc)
+#### All Vue apps
 
-Setup [Prettier](https://prettier.io) with your preferred code conventions.
+###### `vite-env-d.ts`
 
-#### [.eslintrc.json](./.eslintrc.json)
+**IMPORTANT:** Ensure that the `vite-env-d.ts` file is added to the `src` directory.
 
-Add `"*.vue"` file glob pattern to the `overrides.files` section
+This will likely need to be done for all new Vue projects/packages.
 
-Update this section to enable `eslint-plugin-vue` for `"*.vue"` files:
-
-```json
-{
-  "files": ["*.ts", "*.tsx", "*.vue"],
-  "extends": [
-    "plugin:@nx/typescript", // NOTE: @nx/typescript already extends the usual eslint + typescript and prettier plugins
-    "plugin:vue/vue3-recommended"
-  ],
-  "rules": {
-    // Add rules from https://eslint.vuejs.org/rules/
-  }
-}
-```
-
-#### All Vue app `project.json`
+###### `project.json`
 
 Ensure `vue` is added to `"lintFilePatterns"`.
 
@@ -131,6 +116,16 @@ NOTE: This step will need to be done for all new Vue projects/packages.
     }
   }
 ```
+
+#### Check the following files for differences to auto generated
+
+- [.eslintrc.json](./.eslintrc.json)
+  - NOTE: @nx/typescript already extends the usual eslint + typescript and prettier plugins
+  - Ensure that `"*.vue"` config is setup
+- [.prettierrc](./.prettierrc): Setup [Prettier](https://prettier.io) with your preferred code conventions.
+- [vite.config.ts](./apps/my-app/vite.config.ts)
+  - Add plugins for SSL, Vuetify
+- `tsconfig.***.json` everywhere
 
 ## Generate code
 
