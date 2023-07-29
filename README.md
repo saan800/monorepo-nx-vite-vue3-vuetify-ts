@@ -3,78 +3,82 @@
 ## Features
 
 [nx](https://nx.dev/) with the plugins:
-* [@nx/vite](https://nx.dev/packages/vite)
-* [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
-* [@nx/cypress](https://nx.dev/packages/cypress)
-* [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
+
+- [@nx/vite](https://nx.dev/packages/vite)
+- [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
+- [@nx/cypress](https://nx.dev/packages/cypress)
+- [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
 
 Vue.js app
-* [Vite](https://vitejs.dev/)
-* [Vue.js](https://vuejs.org/)
-* [Vue Router](https://router.vuejs.org/)
-* [Vuetify](https://vuetifyjs.com/en/)
-* [Pinia](https://pinia.vuejs.org/)
-* [Material Design Icons](https://pictogrammers.com/library/mdi/)
-* [Web Font Loader](https://www.npmjs.com/package/webfontloader)
-* TODO: Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
+
+- [Vite](https://vitejs.dev/)
+- [Vue.js](https://vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Vuetify](https://vuetifyjs.com/en/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Material Design Icons](https://pictogrammers.com/library/mdi/)
+- [Web Font Loader](https://www.npmjs.com/package/webfontloader)
+- TODO: Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
 
 Testing
-* [Vitest](https://vitest.dev/)
-* TODO: Cypress for e2e:
-  * https://www.cypress.io/ 
-  * https://docs.cypress.io/plugins
-    * vite
-    * with gherkin/cucumber
-    * code coverage ?
-  * https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
+
+- [Vitest](https://vitest.dev/) for unit tests
+- TODO: Cypress for e2e tests
+  - https://www.cypress.io/
+  - https://docs.cypress.io/plugins
+    - vite
+    - with gherkin/cucumber
+    - code coverage ?
+  - https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
 
 Other
 
-* Typescript
-* editorconfig
-* eslint
-* prettier
-* husky - git commit hooks - eslint & prettier
-* renovate
+- Typescript
+- editorconfig
+- eslint
+  - [eslint-plugin-vue](https://eslint.vuejs.org/)
+- [Prettier](https://prettier.io/)
+- husky - git commit hooks - eslint & prettier
+- renovate
 
 ## Setup
 
 ### Prerequisites
 
-* [VS Code](https://code.visualstudio.com/)
-  * This repo includes some recommended extensions and their settings
-* npm & npx
-* yarn (or your preferred package manager)
+- [VS Code](https://code.visualstudio.com/)
+  - This repo includes some recommended extensions and their settings
+- npm & npx
+- yarn (or your preferred package manager)
 
 ### Basic Install
 
 ```bash
-# install npx globally
+# Install npx globally
 npm install -g npx
 
-# create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
+# Create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
 # - yarn package manager
-# - configure for vite + vue apps
+# - configured for vite + vue apps
 npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
 # - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/)
 # - App Name: app
 
 cd monorepo-nx-vite-vue3-vuetify-ts
 
-# add packages for vue
-# -W flag installs them at the root level
+# Add packages for vue
+# The "-W" flag installs them at the root level
 yarn add -W @mdi/js pinia vue-router vuetify webfontloader
-yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig eslint-plugin-vuetify sass vite-plugin-vuetify
 
-# add packages for testing
-yarn add --dev @nx/cypress 
+yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig eslint-plugin-vue eslint-plugin-vuetify sass vite-plugin-vuetify
+
+# Add packages for testing
+yarn add --dev @nx/cypress
 # cypress
 # eslint-plugin-cypress
 
-# add other tooling packages
-yarn add --dev -W 
-# concurrently
-# eslint-plugin-prettier
+# Add other tooling packages
+yarn add --dev eslint-plugin-prettier
+# concurrently ?
 # eslint-plugin-promise
 # eslint-plugin-tsdoc
 # vite-plugin-checker
@@ -82,18 +86,51 @@ yarn add --dev -W
 
 ### Manual Updates
 
+#### [package.json](./package.json)
+
+Ensure the following pacakges are in `devDependencies` (instead of `dependencies`)
+
+- @nx/.\*
+- @nxext/.\*
+- vue-tsc
+
+#### [.prettierrc](./.prettierrc)
+
+Setup [Prettier](https://prettier.io) with your preferred code conventions.
+
 #### [.eslintrc.json](./.eslintrc.json)
 
-Where ever the file glob patterns type typescript files are, add `"*.vue"`:
+Add `"*.vue"` file glob pattern to the `overrides.files` section
+
+Update this section to enable `eslint-plugin-vue` for `"*.vue"` files:
 
 ```json
 {
-  ...
-  "files": ["*.ts", "*.tsx", "*.vue"]
-  ...
+  "files": ["*.ts", "*.tsx", "*.vue"],
+  "extends": [
+    "plugin:@nx/typescript", // NOTE: @nx/typescript already extends the usual eslint + typescript and prettier plugins
+    "plugin:vue/vue3-recommended"
+  ],
+  "rules": {
+    // Add rules from https://eslint.vuejs.org/rules/
+  }
 }
-```     
+```
 
+#### All Vue app `project.json`
+
+Ensure `vue` is added to `"lintFilePatterns"`.
+
+NOTE: This step will need to be done for all new Vue projects/packages.
+
+```json
+  "lint": {
+    ...
+    "options": {
+      "lintFilePatterns": ["apps/app/**/*.{ts,tsx,vue,js,jsx}"]
+    }
+  }
+```
 
 ## Generate code
 

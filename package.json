@@ -2,7 +2,10 @@
   "name": "@monorepo-nx-vite-vue3-vuetify-ts/source",
   "version": "0.0.0",
   "license": "GNU",
-  "scripts": {},
+  "scripts": {
+    "lint": "nx run-many -t lint",
+    "lint:fix": "nx run-many -t lint --fix"
+  },
   "private": true,
   "dependencies": {
     "@mdi/js": "^7.2.96",
