@@ -1,7 +1,7 @@
 {
-  "name": "app",
+  "name": "my-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/app/src",
+  "sourceRoot": "apps/my-app/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/app"
+        "outputPath": "dist/apps/my-app"
       },
       "configurations": {
         "development": {
@@ -24,15 +24,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "app:build"
+        "buildTarget": "my-app:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "app:build:development",
+          "buildTarget": "my-app:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "app:build:production",
+          "buildTarget": "my-app:build:production",
           "hmr": false
         }
       }
@@ -41,30 +41,30 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "app:build"
+        "buildTarget": "my-app:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "app:build:development"
+          "buildTarget": "my-app:build:development"
         },
         "production": {
-          "buildTarget": "app:build:production"
+          "buildTarget": "my-app:build:production"
         }
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/app"],
+      "outputs": ["coverage/apps/my-app"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/app"
+        "reportsDirectory": "../../coverage/apps/my-app"
       }
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/app/**/*.{ts,tsx,vue,js,jsx}"]
+        "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,vue,js,jsx}"]
       }
     }
   },

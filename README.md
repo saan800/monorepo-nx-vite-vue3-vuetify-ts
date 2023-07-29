@@ -61,7 +61,7 @@ npm install -g npx
 # - configured for vite + vue apps
 npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
 # - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/)
-# - App Name: app
+# - App Name: my-app
 
 cd monorepo-nx-vite-vue3-vuetify-ts
 
@@ -84,11 +84,11 @@ yarn add --dev eslint-plugin-prettier
 # vite-plugin-checker
 ```
 
-### Manual Updates
+### Manual Config Updates
 
 #### [package.json](./package.json)
 
-Ensure the following pacakges are in `devDependencies` (instead of `dependencies`)
+Ensure the following packages are in `devDependencies` (instead of `dependencies`)
 
 - @nx/.\*
 - @nxext/.\*
@@ -127,7 +127,7 @@ NOTE: This step will need to be done for all new Vue projects/packages.
   "lint": {
     ...
     "options": {
-      "lintFilePatterns": ["apps/app/**/*.{ts,tsx,vue,js,jsx}"]
+      "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,vue,js,jsx}"]
     }
   }
 ```

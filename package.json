@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "license": "GNU",
   "scripts": {
+    "dev": "nx serve my-app --configuration=development",
     "lint": "nx run-many -t lint",
-    "lint:fix": "nx run-many -t lint --fix"
+    "lint:fix": "nx run-many -t lint --fix",
+    "test:unit": "npx nx run-many -t test",
+    "test:e2e": "npx nx run-many -t e2e"
   },
   "private": true,
   "dependencies": {
