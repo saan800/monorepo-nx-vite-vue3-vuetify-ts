@@ -7,6 +7,7 @@
 ## Features
 
 * [nx](https://nx.dev/)
+  * [](https://nx.dev/packages/vite)
 
 
 ## Setup
@@ -25,14 +26,16 @@
 # install npx globally
 npm install -g npx
 
-# create "monorepo-nx-vite-vue3-vuetify-ts" repo with yarn package manager
-npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --pm yarn
-# - Which stack do you want to use? None
-# - Package-based or integrated? Package based
+# create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
+# - yarn package manager
+# - configured for vue apps
+npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
 # - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/)
+# - App Name: app
 
 cd monorepo-nx-vite-vue3-vuetify-ts
-npm install @nxext/vue --save
+
+yarn add --dev @nxext/vue -W # -W adds package to the root
 ```
 
 
