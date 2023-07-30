@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx", "vue"],
+  "plugins": ["@nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.vue", "*.js", "*.jsx"],
@@ -23,7 +23,7 @@
     },
     {
       "files": ["*.ts", "*.tsx", "*.vue"],
-      "extends": ["plugin:@nx/typescript", "plugin:vue/vue3-recommended", "prettier"],
+      "extends": ["plugin:@nx/typescript", "plugin:vue/vue3-recommended", "plugin:vuetify/base", "prettier"],
       "rules": {
         "vue/singleline-html-element-content-newline": "off",
         "vue/max-attributes-per-line": [
