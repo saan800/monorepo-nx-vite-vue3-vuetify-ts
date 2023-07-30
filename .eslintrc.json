@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "vue"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.vue", "*.js", "*.jsx"],
@@ -23,10 +23,18 @@
     },
     {
       "files": ["*.ts", "*.tsx", "*.vue"],
-      "extends": ["plugin:@nx/typescript", "plugin:vue/vue3-recommended"],
+      "extends": ["plugin:@nx/typescript", "plugin:vue/vue3-recommended", "prettier"],
       "rules": {
         "vue/singleline-html-element-content-newline": "off",
-        "vue/max-attributes-per-line": "off",
+        "vue/max-attributes-per-line": [
+          "error",
+          {
+            "singleline": 20,
+            "multiline": {
+              "max": 1
+            }
+          }
+        ],
         "vue/html-self-closing": [
           "warn",
           {
