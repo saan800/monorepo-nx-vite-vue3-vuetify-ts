@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 

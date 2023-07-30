@@ -2,9 +2,18 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        // use an array
+        "project": ["apps/*/tsconfig.app.json", "libs/*/tsconfig.lib.json"]
+      }
+    }
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.vue", "*.js", "*.jsx"],
+      "extends": ["plugin:import/recommended"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -17,6 +26,44 @@
                 "onlyDependOnLibsWithTags": ["*"]
               }
             ]
+          }
+        ],
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true
+          }
+        ],
+        "import/order": [
+          1,
+          {
+            "groups": ["external", "builtin", "internal", "sibling", "parent", "index"],
+            // TODO: make sure this is correct for this template folder structure
+            "pathGroups": [
+              {
+                "pattern": "components",
+                "group": "internal"
+              },
+              {
+                "pattern": "common",
+                "group": "internal"
+              },
+              {
+                "pattern": "routes/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "assets/**",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["internal"],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
           }
         ]
       }

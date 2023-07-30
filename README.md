@@ -31,15 +31,25 @@ Testing
     - code coverage ?
   - https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
 
+CI/CD
+
+- GitHub Actions
+  - renovate - auto merge for patch / minor updates
+
 Other
 
 - Typescript
-- editorconfig
-- eslint
+- [EditorConfig](https://editorconfig.org/)
+- [ESLint](https://eslint.org/)
+  - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
   - [eslint-plugin-vue](https://eslint.vuejs.org/)
+  - [eslint-plugin-vuetify](https://www.npmjs.com/package/eslint-plugin-vuetify)
+  - [rule.sort-imports](https://eslint.org/docs/latest/rules/sort-imports) and [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) and [eslint-import-resolver-typescript](https://www.npmjs.com/package/eslint-import-resolver-typescript)
+  - NOTE: `nx` also has default configuration for typescript in eslint that is used
 - [Prettier](https://prettier.io/)
+  - [editorconfig = true](https://prettier.io/docs/en/configuration.html#editorconfig): Prettier uses the compatible editorconfig settings, so don't have to configure the same thing in multiple places
 - husky - git commit hooks - eslint & prettier
-- renovate
+- Code Spell Checker
 
 ## Setup
 
@@ -69,7 +79,7 @@ cd monorepo-nx-vite-vue3-vuetify-ts
 # The "-W" flag installs them at the root level
 yarn add -W @mdi/js pinia vue-router vuetify webfontloader
 
-yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig eslint-plugin-vue eslint-plugin-vuetify sass vite-plugin-vuetify
+yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig sass vite-plugin-vuetify
 
 # Add packages for testing
 yarn add --dev @nx/cypress
@@ -77,7 +87,8 @@ yarn add --dev @nx/cypress
 # eslint-plugin-cypress
 
 # Add other tooling packages
-yarn add --dev eslint-plugin-prettier
+# - linting
+yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify
 # concurrently ?
 # eslint-plugin-promise
 # eslint-plugin-tsdoc
