@@ -1,6 +1,17 @@
 {
+  "cSpell.caseSensitive": false,
   "cSpell.language": "en-GB",
-  "cSpell.words": ["nxext", "pinia", "sass", "Vite", "vuetify", "webfontloader"],
+  "cSpell.useGitignore": true,
+  "cSpell.customDictionaries": {
+    "project-words": {
+      "name": "project-words",
+      "path": "${workspaceRoot}/.projectwords.txt",
+      "description": "Words used in this project",
+      "addWords": true
+    },
+    "custom": true, // Enable the `custom` dictionary
+    "internal-terms": false // Disable the `internal-terms` dictionary
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
