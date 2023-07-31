@@ -1,11 +1,11 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
   "settings": {
     "import/resolver": {
       "typescript": {
-        // use an array
+        // Need this from eslint-import-resolver-typescript because we are aliasing
+        // root project paths as "@"
         "project": ["apps/*/tsconfig.app.json", "libs/*/tsconfig.lib.json"]
       }
     }
@@ -70,7 +70,13 @@
     },
     {
       "files": ["*.ts", "*.tsx", "*.vue"],
-      "extends": ["plugin:@nx/typescript", "plugin:vue/vue3-recommended", "plugin:vuetify/base", "prettier"],
+      "extends": [
+        "plugin:@nx/typescript",
+        "plugin:vue/vue3-recommended",
+        "@vue/eslint-config-typescript",
+        "@vue/eslint-config-prettier",
+        "plugin:vuetify/base"
+      ],
       "rules": {
         "vue/singleline-html-element-content-newline": "off",
         "vue/max-attributes-per-line": [
