@@ -55,15 +55,16 @@ CI/CD
 
 Other
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-  - Included recommended extensions and settings for the IDE in this repository. eg
 - husky - git commit hooks - currently runs eslint & prettier
+- [Visual Studio Code](https://code.visualstudio.com/)
+  - Includes recommended extensions and settings for the IDE in this repository. eg
 - Spell Checker
+  - Uses [.project-words.txt](./.project-words.txt) to add valid words for the repository, on top of whatever language dictionary is configured.
   - Visual Studio Code
-    - [Code Spell Checker Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+    - [Code Spell Checker Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) is built on top of [CSpell](https://cspell.org/)
     - Has `en` (US) and `en-GB` installed by default, but other [language dictionaries](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker#language-dictionaries) are available
-  - Visual Studio
-    - TODO: can we use the same txt ??
+  - TODO: Visual Studio (use the same txt) ??
+  - TODO: JetBrains Rider (use the same txt) ??
 
 ## Setup
 
