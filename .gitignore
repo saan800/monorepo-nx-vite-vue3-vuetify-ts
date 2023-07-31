@@ -1,3 +1,15 @@
+# ******************** IDEs ******************** #
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+# ******************** CODE ******************** #
+
 # compiled output
 dist
 tmp
@@ -6,20 +18,19 @@ tmp
 # dependencies
 node_modules
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
-# misc
-/.sass-cache
-/connect.lock
+# ********** LOGS, TESTS AND COVERAGE ********** #
+
 /coverage
 npm-debug.log
 yarn-error.log
 testem.log
+
+# ******************* OTHER ******************** #
+
+# misc
+/.sass-cache
+/connect.lock
 /typings
 
 # System Files
