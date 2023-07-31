@@ -20,6 +20,7 @@
   ],
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "nx serve my-app --configuration=development",
     "lint": "nx run-many -t lint",
     "lint:fix": "nx run-many -t lint --fix",
@@ -59,7 +60,9 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-vue": "^9.14.1",
     "eslint-plugin-vuetify": "^2.0.5",
+    "husky": "^8.0.0",
     "jsdom": "~22.1.0",
+    "lint-staged": "^13.2.3",
     "nx": "16.5.5",
     "prettier": "^2.6.2",
     "sass": "^1.64.1",

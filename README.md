@@ -51,14 +51,14 @@ Linting and Coding Conventions
 
 CI/CD
 
-- GitHub Actions
-  - renovate - auto merge for patch / minor updates
+- TODO: GitHub Actions
+  - TODO: renovate - auto merge for patch / minor updates
 
 Other
 
 - husky - git commit hooks - currently runs eslint & prettier
 - [Visual Studio Code](https://code.visualstudio.com/)
-  - Includes recommended extensions and settings for the IDE in this repository. eg
+  - Includes recommended [extensions](./.vscode/extensions.json) and [settings](./.vscode/settings.json) for the IDE in this repository.
 - Spell Checker
   - Uses [.project-words.txt](./.project-words.txt) to add valid words for the repository, on top of whatever language dictionary is configured.
   - Visual Studio Code
@@ -82,27 +82,31 @@ npm install -g npx
 
 # Create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
 # - yarn package manager
-# - configured for vite + vue apps
+# - configured for typescript + vite + vitest + vue apps
 npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
-# - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/)
+# - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/, but you can if you wish)
 # - App Name: my-app
 
 cd monorepo-nx-vite-vue3-vuetify-ts
 
-# Add packages for vue
+# Add more packages for vue
 # The "-W" flag installs them at the root level
 yarn add -W @mdi/js pinia vue-router vuetify webfontloader
 
 yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig sass vite-plugin-vuetify
 
-# Add packages for testing
+# Add more packages for testing
 yarn add --dev @nx/cypress
 # cypress
 # eslint-plugin-cypress
 
 # Add other tooling packages
-# - linting
+# - linting and code conventions
 yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify
+# - husky and lint-staged
+yarn add --dev husky lint-staged
+npx husky-init
+
 # concurrently ?
 # eslint-plugin-promise
 # eslint-plugin-tsdoc
