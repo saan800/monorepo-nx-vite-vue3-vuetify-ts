@@ -15,6 +15,7 @@
       "files": ["*.ts", "*.tsx", "*.vue", "*.js", "*.jsx"],
       "extends": ["plugin:import/recommended"],
       "rules": {
+        // https://nx.dev/core-features/enforce-project-boundaries
         "@nx/enforce-module-boundaries": [
           "error",
           {
@@ -28,6 +29,7 @@
             ]
           }
         ],
+        // Start Sort Imports...
         "sort-imports": [
           "error",
           {
@@ -66,11 +68,14 @@
             }
           }
         ]
+        // End Sort Imports...
       }
     },
     {
       "files": ["*.ts", "*.tsx", "*.vue"],
       "extends": [
+        // NOTE: "@nx/typescript" includes the standard typescript and prettier plugins
+        //       There is also "plugin:@nx/javascript" if you want to add *.js, *.jsx config
         "plugin:@nx/typescript",
         "plugin:vue/vue3-recommended",
         "@vue/eslint-config-typescript",
@@ -78,6 +83,8 @@
         "plugin:vuetify/base"
       ],
       "rules": {
+        "no-console": 2,
+        // Disabled due to conflicts with prettier printWidth option
         "vue/singleline-html-element-content-newline": "off",
         "vue/max-attributes-per-line": [
           "error",
@@ -89,24 +96,15 @@
           }
         ],
         "vue/html-self-closing": [
-          "warn",
+          "error",
           {
             "html": {
-              "void": "always",
-              "normal": "always",
-              "component": "always"
-            },
-            "svg": "always",
-            "math": "always"
+              // Need this rule for self closing tags like <img />
+              "void": "always"
+            }
           }
-        ],
-        "no-console": 2
+        ]
       }
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
     }
   ]
 }

@@ -2,6 +2,23 @@
   "name": "@monorepo-nx-vite-vue3-vuetify-ts/source",
   "version": "0.0.0",
   "license": "GNU",
+  "author": {
+    "name": "saan800",
+    "url": "https://github.com/saan800"
+  },
+  "repository": {
+    "url": "https://github.com/saan800/monorepo-nx-vite-vue3-vuetify-ts"
+  },
+  "keywords": [
+    "nx",
+    "vite",
+    "vue",
+    "vue3",
+    "vuetify",
+    "pinia",
+    "typescript"
+  ],
+  "private": true,
   "scripts": {
     "dev": "nx serve my-app --configuration=development",
     "lint": "nx run-many -t lint",
@@ -9,7 +26,6 @@
     "test:unit": "npx nx run-many -t test",
     "test:e2e": "npx nx run-many -t e2e"
   },
-  "private": true,
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "pinia": "^2.1.6",

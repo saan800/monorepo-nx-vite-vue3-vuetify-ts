@@ -4,7 +4,7 @@
 
 Vue.js Apps and Libs
 
-- Typescript
+- [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
   - [Production builds](https://vitejs.dev/guide/why.html#why-bundle-for-production) with tree-shaking, lazy-loading and common chunk splitting
   - Static generated (eg js and css) and imported (eg image names) [filename's are hashed](https://vitejs.dev/guide/assets.html) to avoid caching issues.
@@ -17,24 +17,24 @@ Vue.js Apps and Libs
 - [Web Font Loader](https://www.npmjs.com/package/webfontloader)
 - TODO: Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
 
-[Nx](https://nx.dev/) for monorepo management
-
-- [@nx/vite](https://nx.dev/packages/vite)
-- [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
-- [@nx/cypress](https://nx.dev/packages/cypress)
-- [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
-
 Testing
 
 - [Vitest](https://vitest.dev/) for unit tests
-- TODO: Cypress for e2e tests -
-  - combine with vitest??
+  - TODO: code coverage
+- TODO: Cypress for browser-based tests
   - https://www.cypress.io/
   - https://docs.cypress.io/plugins
     - vite
     - with gherkin/cucumber
     - code coverage ?
   - https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
+
+[Nx](https://nx.dev/) for monorepo management
+
+- [@nx/vite](https://nx.dev/packages/vite)
+- [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
+- [@nx/cypress](https://nx.dev/packages/cypress)
+- [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
 
 Linting and Coding Conventions
 
@@ -44,6 +44,7 @@ Linting and Coding Conventions
   - [eslint-plugin-vue](https://eslint.vuejs.org/)
   - [eslint-plugin-vuetify](https://www.npmjs.com/package/eslint-plugin-vuetify)
   - [rule.sort-imports](https://eslint.org/docs/latest/rules/sort-imports) and [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) and [eslint-import-resolver-typescript](https://www.npmjs.com/package/eslint-import-resolver-typescript)
+    - Keep import statements sorted and organised
   - NOTE: `nx` also has default configuration for typescript in eslint that is used
 - [Prettier](https://prettier.io/)
   - [editorconfig = true](https://prettier.io/docs/en/configuration.html#editorconfig): Prettier uses the compatible editorconfig settings, so don't have to configure the same thing in multiple places
