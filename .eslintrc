@@ -83,7 +83,7 @@
         "plugin:vuetify/base"
       ],
       "rules": {
-        "no-console": 2,
+        "no-console": "error",
         // Disabled due to conflicts with prettier printWidth option
         "vue/singleline-html-element-content-newline": "off",
         "vue/max-attributes-per-line": [
