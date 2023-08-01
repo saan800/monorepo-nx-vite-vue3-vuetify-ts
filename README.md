@@ -58,7 +58,7 @@ Linting and Coding Conventions
 
 CI/CD
 
-- TODO: GitHub Actions
+- [GitHub Actions](https://docs.github.com/en/actions)
   - TODO: renovate - auto merge for patch / minor updates
 
 Other

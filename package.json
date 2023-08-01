@@ -22,7 +22,8 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "nx serve my-app --configuration=development",
-    "lint": "nx run-many -t lint",
+    "build": "nx build my-app --configuration=production",
+    "lint": "nx run-many -t lint --cached --silent",
     "lint:fix": "nx run-many -t lint --fix --cached --silent",
     "lint:spellcheck": "cspell --no-progress --show-suggestions --color \"**\"",
     "test:ci": "nx run-many -t test --coverage",
