@@ -25,8 +25,10 @@
     "lint": "nx run-many -t lint",
     "lint:fix": "nx run-many -t lint --fix --cached --silent",
     "lint:spellcheck": "cspell --no-progress --show-suggestions --color \"**\"",
-    "test:unit": "npx nx run-many -t test",
-    "test:e2e": "npx nx run-many -t e2e"
+    "test:ci": "nx run-many -t test --coverage",
+    "test:unit": "nx run-many -t test",
+    "test:watch": "nx run-many -t test --watch",
+    "test:e2e": "nx run-many -t e2e"
   },
   "dependencies": {
     "@mdi/js": "^7.2.96",
