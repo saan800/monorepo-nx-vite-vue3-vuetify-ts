@@ -42,5 +42,12 @@ jobs:
           path: reports/unit-tests/*.xml
           reporter: jest-junit
 
+      # TODO: Consolidate multiple coverage-final.json files for various libs and apps
+      - name: Upload unit test code coverage
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          coverage-file: ./coverage/apps/my-app/coverage-final.json
+          base-coverage-file: ./coverage/apps/my-app/coverage-final.json
+
       - name: Build
         run: yarn build

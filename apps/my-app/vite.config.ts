@@ -55,6 +55,9 @@ export default defineConfig({
     cache: {
       dir: '../../node_modules/.vitest'
     },
+    coverage: {
+      reporter: ['json']
+    },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     outputFile: '../../reports/unit-tests/my-app.xml'
