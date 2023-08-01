@@ -1,21 +1,18 @@
-# Monorepo with Nx Vite Vue3 Vuetify Typescript
+# Monorepo with Nx, Vite, Vue3, Vuetify, Pinia and Typescript
 
 ## Features
 
-[nx](https://nx.dev/) with the plugins:
+Vue.js Apps and Libs
 
-- [@nx/vite](https://nx.dev/packages/vite)
-- [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
-- [@nx/cypress](https://nx.dev/packages/cypress)
-- [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
-
-Vue.js app
-
+- [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+  - [Production builds](https://vitejs.dev/guide/why.html#why-bundle-for-production) with tree-shaking, lazy-loading and common chunk splitting
+  - Static generated (eg js and css) and imported (eg image names) [filename's are hashed](https://vitejs.dev/guide/assets.html) to avoid caching issues.
 - [Vue.js](https://vuejs.org/)
 - [Vue Router](https://router.vuejs.org/)
 - [Vuetify](https://vuetifyjs.com/en/)
 - [Pinia](https://pinia.vuejs.org/)
+- [Sass / Scss](https://sass-lang.com/)
 - [Material Design Icons](https://pictogrammers.com/library/mdi/)
 - [Web Font Loader](https://www.npmjs.com/package/webfontloader)
 - TODO: Storybook: https://nx.dev/packages/storybook and https://storybook.js.org/
@@ -23,7 +20,8 @@ Vue.js app
 Testing
 
 - [Vitest](https://vitest.dev/) for unit tests
-- TODO: Cypress for e2e tests
+  - TODO: code coverage
+- TODO: Cypress for browser-based tests
   - https://www.cypress.io/
   - https://docs.cypress.io/plugins
     - vite
@@ -31,24 +29,52 @@ Testing
     - code coverage ?
   - https://marketplace.visualstudio.com/items?itemName=Shelex.vscode-cy-helper
 
+[Nx](https://nx.dev/) for monorepo management
+
+- [@nx/vite](https://nx.dev/packages/vite)
+- [@nxext/vue](https://nxext.dev/docs/vue/installation.html)
+- [@nx/cypress](https://nx.dev/packages/cypress)
+- [@nx/eslint-plugin](https://nx.dev/packages/eslint-plugin)
+
+Linting and Coding Conventions
+
+- [EditorConfig](https://editorconfig.org/)
+- [ESLint](https://eslint.org/)
+  - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
+  - [eslint-plugin-vue](https://eslint.vuejs.org/)
+  - [eslint-plugin-vuetify](https://www.npmjs.com/package/eslint-plugin-vuetify)
+  - [rule.sort-imports](https://eslint.org/docs/latest/rules/sort-imports) and [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) and [eslint-import-resolver-typescript](https://www.npmjs.com/package/eslint-import-resolver-typescript)
+    - Keep import statements sorted and organised
+  - NOTE: `nx` also has default configuration for typescript in eslint that are imported
+- [Prettier](https://prettier.io/)
+  - [editorconfig = true](https://prettier.io/docs/en/configuration.html#editorconfig): Prettier uses compatible editorconfig settings, so don't have to configure the same rules in multiple places
+- [Code Spell Checker (CSpell)](https://cspell.org/)
+  - CSpell seems to have a lot of IDE plugins and simple configuration.
+  - Use [.cspell.json](./.cspell.json) to add configuration and [.project-dictionary.txt](./.project-dictionary.txt) valid words for the repository, on top of whatever language dictionary is configured.
+  - Added `lint:spellcheck` script to [package.json](./package.json) so that can run outside of an IDE.
+  - Visual Studio Code: [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+    - Has `en` (US) and `en-GB` installed by default, but other [language dictionaries](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker#language-dictionaries) are available
+  - JetBrains Rider: [CSpell Check](https://plugins.jetbrains.com/plugin/20676-cspell-check)
+
+CI/CD
+
+- [GitHub Actions](https://docs.github.com/en/actions)
+  - TODO: renovate - auto merge for patch / minor updates
+
 Other
 
-- Typescript
-- editorconfig
-- eslint
-  - [eslint-plugin-vue](https://eslint.vuejs.org/)
-- [Prettier](https://prettier.io/)
-- husky - git commit hooks - eslint & prettier
-- renovate
+- [Husky](https://typicode.github.io/husky/)
+  - Runs prettier, eslint, cspell and unit tests as a [git pre-commit hook](./.husky/pre-commit)
+  - Scripts configured to only run staged (ie files that have changes) files for the commit.
+- [Visual Studio Code](https://code.visualstudio.com/)
+  - Includes recommended [extensions](./.vscode/extensions.json) and [settings](./.vscode/settings.json) for the IDE in this repository.
 
 ## Setup
 
 ### Prerequisites
 
-- [VS Code](https://code.visualstudio.com/)
-  - This repo includes some recommended extensions and their settings
-- npm & npx
-- yarn (or your preferred package manager)
+- npm and npx
+- yarn (or alter the instructions below to use your preferred package manager )
 
 ### Basic Install
 
@@ -58,29 +84,34 @@ npm install -g npx
 
 # Create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
 # - yarn package manager
-# - configured for vite + vue apps
+# - configured for typescript + vite + vitest + vue apps
 npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
-# - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/)
+# - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/, but you can if you wish)
 # - App Name: my-app
 
 cd monorepo-nx-vite-vue3-vuetify-ts
 
-# Add packages for vue
+# Add more packages for vue
 # The "-W" flag installs them at the root level
 yarn add -W @mdi/js pinia vue-router vuetify webfontloader
 
-yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig eslint-plugin-vue eslint-plugin-vuetify sass vite-plugin-vuetify
+yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig sass vite-plugin-vuetify
 
-# Add packages for testing
+# Add more packages for testing
 yarn add --dev @nx/cypress
 # cypress
 # eslint-plugin-cypress
 
 # Add other tooling packages
-yarn add --dev eslint-plugin-prettier
+# - linting and code conventions
+yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify cspell
+# - husky
+yarn add --dev husky
+npx husky-init
+
 # concurrently ?
 # eslint-plugin-promise
-# eslint-plugin-tsdoc
+# eslint-plugin-ts doc
 # vite-plugin-checker
 ```
 
@@ -94,7 +125,7 @@ Ensure the following packages are in `devDependencies` (instead of `dependencies
 - @nxext/.\*
 - vue-tsc
 
-#### All Vue apps
+#### All Vue apps and libs
 
 ###### `vite-env-d.ts`
 
@@ -119,10 +150,13 @@ NOTE: This step will need to be done for all new Vue projects/packages.
 
 #### Check the following files for differences to auto generated
 
-- [.eslintrc.json](./.eslintrc.json)
-  - NOTE: @nx/typescript already extends the usual eslint + typescript and prettier plugins
+- [.editorconfig](./.editorconfig): Setup [EditorConfig](https://editorconfig.org/) with your preferred code conventions.
+- [.eslintrc](./.eslintrc)
+  - **NOTE:** @nx/typescript already extends the usual eslint + typescript and prettier plugins
   - Ensure that `"*.vue"` config is setup
-- [.prettierrc](./.prettierrc): Setup [Prettier](https://prettier.io) with your preferred code conventions.
+- [.prettierrc](./.prettierrc)
+  - Add the option `"editorconfig": true` so that Prettier will default to compatible EditorConfig settings. This saves on having to update settings twice for the same thing.
+  - Setup [Prettier](https://prettier.io) with your preferred code conventions.
 - [vite.config.ts](./apps/my-app/vite.config.ts)
   - Add plugins for SSL, Vuetify
 - `tsconfig.***.json` everywhere
@@ -163,7 +197,7 @@ Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provid
 
 ## Ready to deploy?
 
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
+Just run `nx build my-app` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
 
 ## Set up CI!
 

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "caseSensitive": false,
+  "language": "en-GB",
+  "useGitignore": true,
+  "dictionaries": ["project-dictionary"],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-dictionary",
+      "path": "./.project-dictionary.txt",
+      "description": "Words used in this project",
+      "addWords": true
+    }
+  ],
+  "ignorePaths": ["node_modules", "LICENSE"]
+}

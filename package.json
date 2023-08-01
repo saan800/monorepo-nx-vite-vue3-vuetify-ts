@@ -2,14 +2,35 @@
   "name": "@monorepo-nx-vite-vue3-vuetify-ts/source",
   "version": "0.0.0",
   "license": "GNU",
-  "scripts": {
-    "dev": "nx serve my-app --configuration=development",
-    "lint": "nx run-many -t lint",
-    "lint:fix": "nx run-many -t lint --fix",
-    "test:unit": "npx nx run-many -t test",
-    "test:e2e": "npx nx run-many -t e2e"
+  "author": {
+    "name": "saan800",
+    "url": "https://github.com/saan800"
   },
+  "repository": {
+    "url": "https://github.com/saan800/monorepo-nx-vite-vue3-vuetify-ts"
+  },
+  "keywords": [
+    "nx",
+    "vite",
+    "vue",
+    "vue3",
+    "vuetify",
+    "pinia",
+    "typescript"
+  ],
   "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "nx serve my-app --configuration=development",
+    "build": "nx build my-app --configuration=production",
+    "lint": "nx run-many -t lint --cached --silent",
+    "lint:fix": "nx run-many -t lint --fix --cached --silent",
+    "lint:spellcheck": "cspell --no-progress --show-suggestions --color \"**\"",
+    "test:ci": "nx run-many -t test --coverage --reporters junit",
+    "test:unit": "nx run-many -t test",
+    "test:watch": "nx run-many -t test --watch",
+    "test:e2e": "nx run-many -t e2e"
+  },
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "pinia": "^2.1.6",
@@ -31,16 +52,20 @@
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vitest/coverage-c8": "~0.32.0",
+    "@vitest/coverage-c8": "^0.33.0",
     "@vitest/ui": "~0.32.0",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.4.0",
+    "cspell": "^6.31.2",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-vue": "^9.14.1",
     "eslint-plugin-vuetify": "^2.0.5",
+    "husky": "^8.0.0",
     "jsdom": "~22.1.0",
     "nx": "16.5.5",
     "prettier": "^2.6.2",
