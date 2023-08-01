@@ -26,7 +26,7 @@
     "lint": "nx run-many -t lint --cached --silent",
     "lint:fix": "nx run-many -t lint --fix --cached --silent",
     "lint:spellcheck": "cspell --no-progress --show-suggestions --color \"**\"",
-    "test:ci": "nx run-many -t test --coverage",
+    "test:ci": "nx run-many -t test --coverage --reporters junit",
     "test:unit": "nx run-many -t test",
     "test:watch": "nx run-many -t test --watch",
     "test:e2e": "nx run-many -t e2e"

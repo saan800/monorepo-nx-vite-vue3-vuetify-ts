@@ -28,5 +28,15 @@ jobs:
       - name: Run unit tests
         run: yarn test:ci
 
+      - name: Test Report
+        # run this step even if previous step failed
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Unit Tests # Name of the check run which will be created
+          path: reports/unit-tests/*.xml # Path to test results
+          reporter: jest-junit # Format of test results
+
       - name: Build
         run: yarn build
+        if: success()
