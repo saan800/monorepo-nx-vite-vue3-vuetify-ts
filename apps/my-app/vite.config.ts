@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
@@ -56,6 +57,7 @@ export default defineConfig({
       dir: '../../node_modules/.vitest'
     },
     coverage: {
+      clean: true,
       reporter: ['text', 'json-summary', 'json']
     },
     environment: 'jsdom',
