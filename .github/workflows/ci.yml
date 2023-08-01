@@ -28,15 +28,14 @@ jobs:
       - name: Run unit tests
         run: yarn test:ci
 
-      - name: Test Report
+      - name: Upload unit test results
+        uses: actions/upload-artifact@v2 # upload test results
         # run this step even if previous step failed
-        uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: Unit Tests # Name of the check run which will be created
-          path: reports/unit-tests/*.xml # Path to test results
-          reporter: jest-junit # Format of test results
+          name: unit-test-results
+          path: reports/unit-tests/*.xml
+          reporter: jest-junit
 
       - name: Build
         run: yarn build
-        if: success()
