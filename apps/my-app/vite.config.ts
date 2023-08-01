@@ -56,7 +56,7 @@ export default defineConfig({
       dir: '../../node_modules/.vitest'
     },
     coverage: {
-      reporter: ['json']
+      reporter: ['text', 'json-summary', 'json']
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
