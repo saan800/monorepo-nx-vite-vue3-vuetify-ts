@@ -71,7 +71,7 @@ import WelcomeItem from './WelcomeItem.vue'
     . You should also subscribe to
     <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a>
     and follow the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
+    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs </a>
     twitter account for latest news in the Vue world.
   </WelcomeItem>
 
