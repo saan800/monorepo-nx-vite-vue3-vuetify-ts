@@ -10,6 +10,11 @@ jobs:
   build_test:
     name: Build and Unit Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v3
@@ -28,14 +33,32 @@ jobs:
       - name: Run unit tests
         run: yarn test:ci
 
-      # - name: Upload unit test results
-      #   uses: dorny/test-reporter@v1
-      #   # run this step even if previous step failed
-      #   if: success() || failure()
+      - name: Upload unit test results
+        uses: dorny/test-reporter@v1
+        # run this step even if previous step failed
+        if: always()
+        with:
+          name: unit-test-results
+          path: reports/unit-tests/*.xml
+          reporter: jest-junit
+
+      - name: Upload unit test coverage
+        uses: davelosert/vitest-coverage-report-action@v2
+        # Also generate the report if tests are failing
+        if: always()
+        with:
+          name: unit-test-coverage
+          json-summary-path: ./coverage/apps/my-app/coverage-summary.json
+          json-final-path: ./coverage/apps/my-app/coverage-final.json
+          vite-config-path: ./apps/my-app/vite.config.ts
+          file-coverage-mode: all
+
+      # TODO: Consolidate multiple coverage-final.json files for various libs and apps
+      # - name: Upload unit test code coverage
+      #   uses: ArtiomTr/jest-coverage-report-action@v2
       #   with:
-      #     name: unit-test-results
-      #     path: reports/unit-tests/*.xml
-      #     reporter: jest-junit
+      #     coverage-file: ./coverage/apps/my-app/coverage-final.json
+      #     base-coverage-file: ./coverage/apps/my-app/coverage-final.json
 
       - name: Build
         run: yarn build
