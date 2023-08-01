@@ -45,6 +45,7 @@ jobs:
         # Also generate the report if tests are failing
         if: always()
         with:
+          name: unit-test-coverage
           json-summary-path: ./coverage/apps/my-app/coverage-summary.json
           json-final-path: ./coverage/apps/my-app/coverage-final.json
 
