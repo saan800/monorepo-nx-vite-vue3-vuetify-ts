@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build_test:
+    name: Build and Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Lint project
+        run: yarn lint
+
+      - name: Run unit tests
+        run: yarn test:ci
+
+      # - name: Upload unit test results
+      #   uses: dorny/test-reporter@v1
+      #   # run this step even if previous step failed
+      #   if: success() || failure()
+      #   with:
+      #     name: unit-test-results
+      #     path: reports/unit-tests/*.xml
+      #     reporter: jest-junit
+
+      - name: Build
+        run: yarn build

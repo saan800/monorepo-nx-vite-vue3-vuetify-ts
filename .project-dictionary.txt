@@ -1,0 +1,12 @@
+color
+intelli
+nxext
+pinia
+saan
+sass
+vite
+volar
+vuejs
+vuetify
+webfontloader
+youtube
