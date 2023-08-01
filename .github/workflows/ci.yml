@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -26,11 +26,6 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
-
-      - name: yarn lint
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: lint
 
       - run: yarn lint
       - run: yarn test:ci
