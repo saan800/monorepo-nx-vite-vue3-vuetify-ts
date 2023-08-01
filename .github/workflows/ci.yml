@@ -40,7 +40,7 @@ jobs:
           path: reports/unit-tests/*.xml
           reporter: jest-junit
 
-      - name: 'Report Coverage'
+      - name: Upload unit test coverage
         uses: davelosert/vitest-coverage-report-action@v2
         # Also generate the report if tests are failing
         if: always()
@@ -48,6 +48,7 @@ jobs:
           name: unit-test-coverage
           json-summary-path: ./coverage/apps/my-app/coverage-summary.json
           json-final-path: ./coverage/apps/my-app/coverage-final.json
+          vite-config-path: ./apps/my-app/vite.config.ts
 
       # TODO: Consolidate multiple coverage-final.json files for various libs and apps
       # - name: Upload unit test code coverage
