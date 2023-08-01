@@ -1,6 +1,0 @@
-nxext
-pinia
-sass
-vite
-vuetify
-webfontloader

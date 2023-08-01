@@ -45,9 +45,16 @@ Linting and Coding Conventions
   - [eslint-plugin-vuetify](https://www.npmjs.com/package/eslint-plugin-vuetify)
   - [rule.sort-imports](https://eslint.org/docs/latest/rules/sort-imports) and [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) and [eslint-import-resolver-typescript](https://www.npmjs.com/package/eslint-import-resolver-typescript)
     - Keep import statements sorted and organised
-  - NOTE: `nx` also has default configuration for typescript in eslint that is used
+  - NOTE: `nx` also has default configuration for typescript in eslint that are imported
 - [Prettier](https://prettier.io/)
-  - [editorconfig = true](https://prettier.io/docs/en/configuration.html#editorconfig): Prettier uses the compatible editorconfig settings, so don't have to configure the same thing in multiple places
+  - [editorconfig = true](https://prettier.io/docs/en/configuration.html#editorconfig): Prettier uses compatible editorconfig settings, so don't have to configure the same rules in multiple places
+- [Code Spell Checker (CSpell)](https://cspell.org/)
+  - CSpell seems to have a lot of IDE plugins and simple configuration.
+  - Use [.cspell.json](./.cspell.json) to add configuration and [.project-dictionary.txt](./.project-dictionary.txt) valid words for the repository, on top of whatever language dictionary is configured.
+  - Added `lint:spellcheck` script to [package.json](./package.json) so that can run outside of an IDE.
+  - Visual Studio Code: [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+    - Has `en` (US) and `en-GB` installed by default, but other [language dictionaries](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker#language-dictionaries) are available
+  - JetBrains Rider: [CSpell Check](https://plugins.jetbrains.com/plugin/20676-cspell-check)
 
 CI/CD
 
@@ -56,16 +63,11 @@ CI/CD
 
 Other
 
-- husky - git commit hooks - currently runs eslint & prettier
+- [Husky](https://typicode.github.io/husky/)
+  - Runs prettier, eslint, cspell and unit tests as a [git pre-commit hook](./.husky/pre-commit)
+  - Scripts configured to only run staged (ie files that have changes) files for the commit.
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Includes recommended [extensions](./.vscode/extensions.json) and [settings](./.vscode/settings.json) for the IDE in this repository.
-- Spell Checker
-  - Uses [.project-words.txt](./.project-words.txt) to add valid words for the repository, on top of whatever language dictionary is configured.
-  - Visual Studio Code
-    - [Code Spell Checker Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) is built on top of [CSpell](https://cspell.org/)
-    - Has `en` (US) and `en-GB` installed by default, but other [language dictionaries](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker#language-dictionaries) are available
-  - TODO: Visual Studio (use the same txt) ??
-  - TODO: JetBrains Rider (use the same txt) ??
 
 ## Setup
 
@@ -102,14 +104,14 @@ yarn add --dev @nx/cypress
 
 # Add other tooling packages
 # - linting and code conventions
-yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify
-# - husky and lint-staged
-yarn add --dev husky lint-staged
+yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify cspell
+# - husky
+yarn add --dev husky
 npx husky-init
 
 # concurrently ?
 # eslint-plugin-promise
-# eslint-plugin-tsdoc
+# eslint-plugin-ts doc
 # vite-plugin-checker
 ```
 
@@ -195,7 +197,7 @@ Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provid
 
 ## Ready to deploy?
 
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
+Just run `nx build my-app` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
 
 ## Set up CI!
 
