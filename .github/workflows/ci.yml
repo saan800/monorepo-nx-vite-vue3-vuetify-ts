@@ -10,6 +10,9 @@ jobs:
   build_test:
     name: Build and Unit Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v3
@@ -28,14 +31,14 @@ jobs:
       - name: Run unit tests
         run: yarn test:ci
 
-      # - name: Upload unit test results
-      #   uses: dorny/test-reporter@v1
-      #   # run this step even if previous step failed
-      #   if: success() || failure()
-      #   with:
-      #     name: unit-test-results
-      #     path: reports/unit-tests/*.xml
-      #     reporter: jest-junit
+      - name: Upload unit test results
+        uses: dorny/test-reporter@v1
+        # run this step even if previous step failed
+        if: success() || failure()
+        with:
+          name: unit-test-results
+          path: reports/unit-tests/*.xml
+          reporter: jest-junit
 
       - name: Build
         run: yarn build
