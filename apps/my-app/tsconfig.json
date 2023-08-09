@@ -4,9 +4,12 @@
     "allowJs": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "types": ["vite/client", "vitest"]
+    "types": ["vite/client", "vitest", "vuetify"]
   },
   "files": [],
   "include": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.spec.json" }]
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.vitest.json" }
+  ]
 }

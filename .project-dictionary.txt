@@ -1,12 +1,14 @@
 color
 intelli
 nxext
+persistedstate
 pinia
-saan
+roboto
 sass
 vite
 volar
 vuejs
 vuetify
 webfontloader
+webstorage
 youtube

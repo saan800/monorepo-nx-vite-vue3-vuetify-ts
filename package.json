@@ -2,10 +2,6 @@
   "name": "@monorepo-nx-vite-vue3-vuetify-ts/source",
   "version": "0.0.0",
   "license": "GNU",
-  "author": {
-    "name": "saan800",
-    "url": "https://github.com/saan800"
-  },
   "repository": {
     "url": "https://github.com/saan800/monorepo-nx-vite-vue3-vuetify-ts"
   },
@@ -34,6 +30,7 @@
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "pinia": "^2.1.6",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
     "vuetify": "^3.3.10",
