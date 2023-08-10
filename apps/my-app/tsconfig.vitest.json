@@ -1,8 +1,10 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
+    "composite": true,
+    "lib": [],
     "outDir": "../../dist/out-tsc",
-    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node"]
+    "types": ["node", "jsdom"]
   },
   "include": [
     "vite.config.ts",

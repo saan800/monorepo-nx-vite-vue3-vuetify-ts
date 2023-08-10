@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
@@ -49,7 +48,7 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src', import.meta.url))
       }
     ]
-  },
+  }
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -59,18 +58,4 @@ export default defineConfig({
   //    }),
   //  ],
   // },
-
-  test: {
-    globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest'
-    },
-    coverage: {
-      clean: true,
-      reporter: ['text', 'json-summary', 'json']
-    },
-    environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    outputFile: '../../reports/unit-tests/my-app.xml'
-  }
 })
