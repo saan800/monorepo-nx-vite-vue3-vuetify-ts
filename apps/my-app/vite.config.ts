@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
-import { fileURLToPath, URL } from 'url'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 import viteTsConfigPaths from 'vite-tsconfig-paths'
+import { fileURLToPath, URL } from 'url'
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/my-app',
@@ -35,8 +35,8 @@ export default defineConfig({
     // Vuetify Loader
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin
     vuetify({
-      autoImport: true,
-      styles: { configFile: 'src/styles/settings.scss' }
+      autoImport: true
+      // styles: { configFile: 'src/styles/settings.scss' }
     }),
     viteTsConfigPaths({
       root: '../../'

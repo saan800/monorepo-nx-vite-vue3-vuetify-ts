@@ -1,4 +1,5 @@
 color
+iconsets
 intelli
 nxext
 persistedstate

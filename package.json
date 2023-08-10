@@ -44,6 +44,7 @@
     "@nx/vite": "16.5.5",
     "@nx/workspace": "16.5.5",
     "@nxext/vue": "16.3.0-Beta.3",
+    "@types/node": "^20.4.9",
     "@types/webfontloader": "^1.6.35",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
