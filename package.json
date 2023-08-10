@@ -1,5 +1,7 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "@monorepo-nx-vite-vue3-vuetify-ts/source",
+  "description": "",
   "version": "0.0.0",
   "license": "GNU",
   "repository": {
@@ -19,6 +21,7 @@
     "prepare": "husky install",
     "dev": "nx serve my-app --configuration=development",
     "build": "nx build my-app --configuration=production",
+    "preview": "nx preview my-app --configuration=production",
     "lint": "nx run-many -t lint --cached --silent",
     "lint:fix": "nx run-many -t lint --fix --cached --silent",
     "lint:spellcheck": "cspell --no-progress --show-suggestions --color \"**\"",
