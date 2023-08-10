@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+import { fileURLToPath, URL } from 'url'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
@@ -41,6 +42,14 @@ export default defineConfig({
       root: '../../'
     })
   ],
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url))
+      }
+    ]
+  },
 
   // Uncomment this if you are using workers.
   // worker: {
