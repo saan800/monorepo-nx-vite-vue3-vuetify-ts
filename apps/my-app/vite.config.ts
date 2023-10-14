@@ -47,7 +47,8 @@ export default defineConfig({
         find: '@',
         replacement: fileURLToPath(new URL('./src', import.meta.url))
       }
-    ]
+    ],
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue']
   }
 
   // Uncomment this if you are using workers.

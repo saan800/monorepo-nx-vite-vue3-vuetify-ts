@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { mdiAccountGroup, mdiSpeedometer, mdiViewDashboard } from '@mdi/js'
+import logo from '../assets/logo.svg'
 defineProps<{
   msg: string
 }>()
@@ -8,7 +9,7 @@ defineProps<{
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-center text-center fill-height">
-      <v-img height="300" src="@/assets/logo.svg" />
+      <v-img height="300" :src="logo" />
 
       <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
 
