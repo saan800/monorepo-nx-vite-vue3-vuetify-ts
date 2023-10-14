@@ -30,6 +30,9 @@ jobs:
       - name: Lint project
         run: yarn lint
 
+      - name: Build
+        run: yarn build
+
       - name: Run unit tests
         run: yarn test:ci
 
@@ -59,6 +62,3 @@ jobs:
       #   with:
       #     coverage-file: ./coverage/apps/my-app/coverage-final.json
       #     base-coverage-file: ./coverage/apps/my-app/coverage-final.json
-
-      - name: Build
-        run: yarn build
