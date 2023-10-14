@@ -3,6 +3,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -12,7 +13,6 @@
     "importHelpers": true,
     // "target": "es2015",
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {}
   },
   "exclude": ["node_modules", "tmp"]

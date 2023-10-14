@@ -4,6 +4,7 @@ intelli
 nxext
 persistedstate
 pinia
+playwrite
 roboto
 sass
 vite

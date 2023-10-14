@@ -21,7 +21,7 @@ Testing
 
 - [Vitest](https://vitest.dev/) for unit tests
   - TODO: code coverage
-- TODO: Cypress for browser-based tests
+- TODO: Cypress/playwrite for browser-based tests
   - https://www.cypress.io/
   - https://docs.cypress.io/plugins
     - vite

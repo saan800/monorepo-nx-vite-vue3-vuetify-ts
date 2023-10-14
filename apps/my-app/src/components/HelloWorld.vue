@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { mdiAccountGroup, mdiSpeedometer, mdiViewDashboard } from '@mdi/js'
-import logo from '../assets/logo.svg'
+import logo from '@/assets/logo.svg'
+
 defineProps<{
   msg: string
 }>()
