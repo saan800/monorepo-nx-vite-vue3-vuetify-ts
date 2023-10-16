@@ -1,7 +1,8 @@
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
-import { defineConfig } from 'vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 import viteTsConfigPaths from 'vite-tsconfig-paths'
@@ -10,7 +11,24 @@ import { fileURLToPath, URL } from 'url'
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/my-app',
   build: {
-    target: browserslistToEsbuild()
+    target: browserslistToEsbuild(),
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          // creating a chunk to vuetify deps. Reducing the vendor chunk size
+          if (id.includes('/vuetify/')) {
+            return 'vuetify'
+          }
+          if (
+            id.includes('/vue/') ||
+            id.includes('/vue-router/') ||
+            id.includes('/@vue/')
+          ) {
+            return 'vue'
+          }
+        }
+      }
+    }
   },
   server: {
     port: 4200,
@@ -28,6 +46,7 @@ export default defineConfig({
 
   plugins: [
     basicSsl(),
+    splitVendorChunkPlugin(),
     vue({
       template: {
         // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin#image-loading
@@ -42,6 +61,11 @@ export default defineConfig({
     }),
     viteTsConfigPaths({
       root: '../../'
+    }),
+    // this must be last
+    visualizer({
+      filename: 'bundle-stats.html',
+      gzipSize: true
     })
   ],
   resolve: {
