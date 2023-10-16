@@ -3,4 +3,4 @@
 
 yarn lint:fix
 yarn lint:spellcheck
-# yarn test:unit - vuetify + vitest issues
+yarn test:unit - vuetify + vitest issues
