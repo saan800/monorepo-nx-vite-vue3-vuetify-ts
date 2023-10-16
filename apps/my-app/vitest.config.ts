@@ -1,18 +1,7 @@
-/// <reference types="vitest" />
-import { defineConfig, mergeConfig } from 'vite'
-import { configDefaults } from 'vitest/config'
-// import { fileURLToPath } from 'node:url'
+import { configDefaults, defineConfig, mergeConfig } from 'vitest/config'
 import viteConfig from './vite.config'
 
 const vitest = defineConfig({
-  // test: {
-  //   environment: 'jsdom',
-  //   exclude: [...configDefaults.exclude, 'e2e/*'],
-  //   root: fileURLToPath(new URL('./', import.meta.url)),
-  //   transformMode: {
-  //     web: [/\.[jt]sx$/]
-  //   }
-  // }
   test: {
     environment: 'jsdom',
     globals: true,
@@ -20,6 +9,7 @@ const vitest = defineConfig({
       dir: '../../node_modules/.vitest'
     },
     coverage: {
+      provider: 'v8',
       clean: true,
       reporter: ['text', 'json-summary', 'json']
     },
@@ -36,9 +26,16 @@ const vitest = defineConfig({
       }
     },
     exclude: [...configDefaults.exclude, 'e2e/*'],
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: [
+      'src/*.test.ts',
+      'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+    ],
     outputFile: '../../reports/unit-tests/my-app.xml'
   }
 })
 
 export default mergeConfig(viteConfig, vitest)
+// for vitest v1
+// export default defineConfig((configEnv) =>
+//   mergeConfig(viteConfig, vitest(configEnv))
+// )
