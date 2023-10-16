@@ -1,5 +1,6 @@
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vue from '@vitejs/plugin-vue'
+import browserslistToEsbuild from 'browserslist-to-esbuild'
 import { defineConfig } from 'vite'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
@@ -9,7 +10,7 @@ import { fileURLToPath, URL } from 'url'
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/my-app',
   build: {
-    target: 'esnext'
+    target: browserslistToEsbuild()
   },
   server: {
     port: 4200,
