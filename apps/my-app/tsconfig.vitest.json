@@ -1,13 +1,13 @@
 {
-  "extends": "../../tsconfig.base.app.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "lib": [],
+    "types": ["node", "jsdom"]
   },
-  "include": ["env.d.ts", "vite.config.ts"],
-  "exclude": [
+  "include": [
+    "env.d.ts",
+    "vite.config.ts",
+    "vitest.config.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.tsx",

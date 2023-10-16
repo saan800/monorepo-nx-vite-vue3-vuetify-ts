@@ -21,7 +21,7 @@ Testing
 
 - [Vitest](https://vitest.dev/) for unit tests
   - TODO: code coverage
-- TODO: Cypress for browser-based tests
+- TODO: Cypress/playwrite for browser-based tests
   - https://www.cypress.io/
   - https://docs.cypress.io/plugins
     - vite
@@ -68,6 +68,9 @@ Other
   - Scripts configured to only run staged (ie files that have changes) files for the commit.
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Includes recommended [extensions](./.vscode/extensions.json) and [settings](./.vscode/settings.json) for the IDE in this repository.
+- [rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer)
+  - Visualize and analyze your build bundles to see which modules are taking up space.
+  - Run with `build:stats` and open the generated `bundle-stats.html` in a browser
 
 ## Setup
 
@@ -76,43 +79,9 @@ Other
 - npm and npx
 - yarn (or alter the instructions below to use your preferred package manager )
 
-### Basic Install
-
 ```bash
 # Install npx globally
-npm install -g npx
-
-# Create "monorepo-nx-vite-vue3-vuetify-ts" repo with:
-# - yarn package manager
-# - configured for typescript + vite + vitest + vue apps
-npx create-nx-workspace@latest monorepo-nx-vite-vue3-vuetify-ts --preset=@nxext/vue --pm yarn
-# - Enable distributed caching to make your CI faster? No (I don't want to use https://nx.app/, but you can if you wish)
-# - App Name: my-app
-
-cd monorepo-nx-vite-vue3-vuetify-ts
-
-# Add more packages for vue
-# The "-W" flag installs them at the root level
-yarn add -W @mdi/js pinia vue-router vuetify webfontloader
-
-yarn add --dev @types/webfontloader @vitejs/plugin-basic-ssl @vue/tsconfig sass vite-plugin-vuetify
-
-# Add more packages for testing
-yarn add --dev @nx/cypress
-# cypress
-# eslint-plugin-cypress
-
-# Add other tooling packages
-# - linting and code conventions
-yarn add --dev eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-vue eslint-plugin-vuetify cspell
-# - husky
-yarn add --dev husky
-npx husky-init
-
-# concurrently ?
-# eslint-plugin-promise
-# eslint-plugin-ts doc
-# vite-plugin-checker
+yarn add -g npx
 ```
 
 ### Manual Config Updates

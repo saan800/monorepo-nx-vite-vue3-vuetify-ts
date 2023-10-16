@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.node.json",
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    // TODO: pick when decided on e2e library
+    "cypress.config.*",
+    "playwright.config.*"
+  ]
+}

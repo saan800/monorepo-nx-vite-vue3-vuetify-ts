@@ -1,14 +1,35 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import vue from '@vitejs/plugin-vue'
+import browserslistToEsbuild from 'browserslist-to-esbuild'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 import viteTsConfigPaths from 'vite-tsconfig-paths'
+import { fileURLToPath, URL } from 'url'
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/my-app',
-
+  build: {
+    target: browserslistToEsbuild(),
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          // creating a chunk to vuetify deps. Reducing the vendor chunk size
+          if (id.includes('/vuetify/')) {
+            return 'vuetify'
+          }
+          if (
+            id.includes('/node_modules/vue/') ||
+            id.includes('/node_modules/vue-') ||
+            id.includes('/node_modules/@vue/')
+          ) {
+            return 'vue'
+          }
+        }
+      }
+    }
+  },
   server: {
     port: 4200,
     host: 'localhost',
@@ -25,6 +46,7 @@ export default defineConfig({
 
   plugins: [
     basicSsl(),
+    splitVendorChunkPlugin(),
     vue({
       template: {
         // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin#image-loading
@@ -34,13 +56,30 @@ export default defineConfig({
     // Vuetify Loader
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin
     vuetify({
-      autoImport: true,
-      styles: { configFile: 'src/styles/settings.scss' }
+      autoImport: true
+      // styles: { configFile: 'src/styles/settings.scss' }
     }),
     viteTsConfigPaths({
       root: '../../'
+    }),
+    // this must be last
+    visualizer({
+      filename: 'bundle-stats.html',
+      gzipSize: true
     })
   ],
+  resolve: {
+    // alias: [
+    //   {
+    //     find: '@',
+    //     replacement: fileURLToPath(new URL('./src', import.meta.url))
+    //   }
+    // ],
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue']
+  }
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -50,18 +89,4 @@ export default defineConfig({
   //    }),
   //  ],
   // },
-
-  test: {
-    globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest'
-    },
-    coverage: {
-      clean: true,
-      reporter: ['text', 'json-summary', 'json']
-    },
-    environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    outputFile: '../../reports/unit-tests/my-app.xml'
-  }
 })
