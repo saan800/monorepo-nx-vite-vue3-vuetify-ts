@@ -20,9 +20,9 @@ export default defineConfig({
             return 'vuetify'
           }
           if (
-            id.includes('/vue/') ||
-            id.includes('/vue-router/') ||
-            id.includes('/@vue/')
+            id.includes('/node_modules/vue/') ||
+            id.includes('/node_modules/vue-') ||
+            id.includes('/node_modules/@vue/')
           ) {
             return 'vue'
           }

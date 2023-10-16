@@ -1,15 +1,17 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
     "baseUrl": ".",
+    "allowJs": false,
     "composite": true,
-    "module": "ESNext",
+    "strict": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+  "include": ["env.d.ts", "vite.config.ts"],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
@@ -19,6 +21,5 @@
     "src/**/*.test.js",
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
-  ],
-  "include": ["vite.config.ts", "env.d.ts"]
+  ]
 }
