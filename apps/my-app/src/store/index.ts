@@ -1,3 +1,12 @@
-import { createPinia } from 'pinia'
+import { createPinia, type Pinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-export default createPinia()
+import useConfig from '@/store/config'
+import useGlobal from '@/store/global'
+
+const pinia: Pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
+export default pinia
+
+export { useConfig, useGlobal }

@@ -2,12 +2,5 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "types": ["node"]
-  },
-  "include": [
-    "vite.config.*",
-    "vitest.config.*",
-    // TODO: pick when decided on e2e library
-    "cypress.config.*",
-    "playwright.config.*"
-  ]
+  }
 }

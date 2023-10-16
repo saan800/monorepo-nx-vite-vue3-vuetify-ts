@@ -10,5 +10,6 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
+  "types": ["vuetify"],
   "exclude": ["node_modules"]
 }
