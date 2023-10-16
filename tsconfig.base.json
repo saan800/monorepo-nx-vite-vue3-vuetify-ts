@@ -1,18 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig.json",
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
+    "allowJs": false,
+    "composite": true,
+    "strict": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "skipDefaultLibCheck": true,
-    "paths": {}
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules"]
 }

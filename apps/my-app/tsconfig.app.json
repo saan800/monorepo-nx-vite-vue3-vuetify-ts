@@ -1,12 +1,7 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "extends": "../../tsconfig.base.app.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "allowJs": false,
-    "composite": true,
-    "strict": true,
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["./src/*"]
     }
